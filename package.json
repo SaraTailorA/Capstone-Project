@@ -1,0 +1,14 @@
+{
+  "name": "solarcalc",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=client",
+    "build": "npm run build --workspace=client",
+    "dev:server": "npm run dev --workspace=server"
+  }
+}
