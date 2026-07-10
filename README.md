@@ -1,79 +1,79 @@
-# SolarCalc - Energía Solar Inteligente
+# SolarCalc - Smart Solar Energy
 
-Plataforma web SPA que ayuda a personas y empresas a estimar un sistema de energía solar fotovoltaico para su vivienda, negocio o finca.
+A single-page web application that helps individuals and businesses estimate a photovoltaic solar energy system for their home, business, or farm.
 
-## Stack Tecnológico
+## Tech Stack
 
-- **Frontend:** JavaScript Vanilla, Vite, Tailwind CSS
-- **Backend:** Node.js, Express (próximo)
-- **Base de datos:** PostgreSQL (próximo)
-- **Diseño:** Dark theme inspirado en Tesla Energy
+- **Frontend:** Vanilla JavaScript, Vite, Tailwind CSS
+- **Backend:** Node.js, Express (coming soon)
+- **Database:** PostgreSQL (coming soon)
+- **Design:** Dark theme inspired by Tesla Energy
 
-## Características
+## Features
 
-- Cálculo de sistema solar fotovoltaico en 4 pasos
-- Dos métodos de cálculo: consumo manual o por electrodomésticos
-- Estimación de paneles, inversor, breakers, cableado y protecciones
-- Análisis financiero: costo, ahorro mensual, ROI, reducción de CO₂
-- Registro e inicio de sesión para guardar cotizaciones
-- Dashboard con historial de proyectos
-- Generación de cotización descargable en PDF
-- Marketplace de productos solares
-- Directorio de instaladores certificados
-- Diseño 100% responsive y accesible
+- 4-step photovoltaic system calculator
+- Two calculation methods: manual kWh input or appliance-based estimation
+- Estimates solar panels, inverter, breakers, wiring, and protections
+- Financial analysis: total cost, monthly savings, ROI, CO2 reduction
+- User registration and login to save quotes
+- Dashboard with project history
+- Downloadable PDF quote generation
+- Solar products marketplace
+- Certified installer directory
+- Fully responsive and accessible design
 
-## Instalación
+## Getting Started
 
 ```bash
-# Instalar dependencias
+# Install dependencies
 cd client
 npm install
 
-# Desarrollo
+# Development server
 npm run dev
 
-# Build producción
+# Production build
 npm run build
 
-# Preview
+# Preview production build
 npm run preview
 ```
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
 solarcalc/
 ├── client/                  # Frontend SPA
 │   ├── src/
 │   │   ├── core/           # Router, auth, event bus, storage
-│   │   ├── domain/         # Entidades y cálculos fotovoltaicos
-│   │   ├── components/     # Componentes UI reutilizables
+│   │   ├── domain/         # Entities and photovoltaic calculations
+│   │   ├── components/     # Reusable UI components
 │   │   ├── layouts/        # Layouts (main, auth, dashboard)
-│   │   ├── pages/          # Páginas de la aplicación
-│   │   └── utils/          # Utilidades y constantes
-│   └── public/             # Assets estáticos
-├── server/                 # Backend API (próximo)
-└── docs/                   # Documentación
+│   │   ├── pages/          # Application pages
+│   │   └── utils/          # Utilities and constants
+│   └── public/             # Static assets
+├── server/                 # Backend API (coming soon)
+└── docs/                   # Documentation
 ```
 
-## Historias de Usuario
+## User Stories
 
-- HU-01: Registro de usuario
-- HU-02: Inicio de sesión
-- HU-03: Cierre de sesión
-- HU-04: Editar perfil
-- HU-05: Ingreso consumo kWh
-- HU-06: Estimación por electrodomésticos
-- HU-07: Resultados cálculo solar
-- HU-08: Descargar PDF
-- HU-09: Guardar proyecto
-- HU-10: Dashboard
-- HU-11: Detalle de proyecto
-- HU-12: Eliminar proyecto
-- HU-13: Marketplace productos
-- HU-14: Detalle producto
-- HU-15: Buscar instaladores
-- HU-16: Perfil instalador
+- US-01: User registration
+- US-02: User login
+- US-03: User logout
+- US-04: Edit user profile
+- US-05: Enter monthly kWh consumption
+- US-06: Estimate consumption via appliances
+- US-07: View solar system calculation results
+- US-08: Download quote as PDF
+- US-09: Save project to dashboard
+- US-10: View dashboard overview
+- US-11: View project details
+- US-12: Delete a project
+- US-13: Browse marketplace products
+- US-14: View product details
+- US-15: Search installers by location
+- US-16: View installer profile
 
 ## License
 
