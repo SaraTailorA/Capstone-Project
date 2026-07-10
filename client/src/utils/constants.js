@@ -1,0 +1,76 @@
+export const SOLAR_RULES = {
+  PEAK_SUN_HOURS: 5.0,
+  SYSTEM_EFFICIENCY: 0.80,
+  INVERTER_EFFICIENCY: 0.95,
+  PANEL_WATTAGE: 550,
+  INVERTER_SIZES_KW: [3, 5, 8, 10, 15, 20, 30, 50],
+  INVERTER_OVERSIZE_RATIO: 1.2,
+  BATTERY_CAPACITY_KWH: 10,
+  COST_PER_PANEL: 220,
+  COST_PER_KW_INVERTER: 350,
+  COST_PER_KWH_BATTERY: 400,
+  COST_PER_METER_CABLE: 15,
+  COST_BREAKER: 45,
+  COST_PROTECTION: 85,
+  COST_INSTALLATION_LABOR: 0.15,
+  COST_PERMITS: 200,
+  ELECTRICITY_TARIFF: 0.15,
+  ANNUAL_TARIFF_INCREASE: 0.04,
+  SYSTEM_LIFESPAN_YEARS: 25,
+  CO2_FACTOR_KG_PER_KWH: 0.42,
+};
+
+export const APPLIANCES = [
+  { id: 1, name: 'Bombillo LED', category: 'iluminacion', watts: 15, hours: 8, icon: '💡' },
+  { id: 2, name: 'Refrigerador', category: 'electrodomesticos', watts: 150, hours: 24, icon: '❄️' },
+  { id: 3, name: 'Ventilador de techo', category: 'clima', watts: 75, hours: 10, icon: '🌀' },
+  { id: 4, name: 'Aire acondicionado', category: 'clima', watts: 2000, hours: 8, icon: '🌡️' },
+  { id: 5, name: 'Televisor 55"', category: 'entretenimiento', watts: 120, hours: 6, icon: '📺' },
+  { id: 6, name: 'Computadora de escritorio', category: 'oficina', watts: 300, hours: 8, icon: '🖥️' },
+  { id: 7, name: 'Laptop', category: 'oficina', watts: 65, hours: 8, icon: '💻' },
+  { id: 8, name: 'Lavadora', category: 'electrodomesticos', watts: 500, hours: 1, icon: '👕' },
+  { id: 9, name: 'Secadora', category: 'electrodomesticos', watts: 2500, hours: 1, icon: '🧴' },
+  { id: 10, name: 'Calentador de agua', category: 'electrodomesticos', watts: 4500, hours: 2, icon: '🔥' },
+  { id: 11, name: 'Horno de microondas', category: 'electrodomesticos', watts: 1200, hours: 0.5, icon: '📦' },
+  { id: 12, name: 'Plancha', category: 'electrodomesticos', watts: 1500, hours: 1, icon: '👔' },
+  { id: 13, name: 'Aspiradora', category: 'limpieza', watts: 1400, hours: 1, icon: '🧹' },
+  { id: 14, name: 'Router WiFi', category: 'oficina', watts: 12, hours: 24, icon: '📡' },
+  { id: 15, name: 'Cámaras de seguridad', category: 'seguridad', watts: 30, hours: 24, icon: '📷' },
+  { id: 16, name: 'Bombilla halógena', category: 'iluminacion', watts: 50, hours: 6, icon: '🔆' },
+  { id: 17, name: 'Nevera bar', category: 'electrodomesticos', watts: 100, hours: 24, icon: '🍷' },
+  { id: 18, name: 'Licuadora', category: 'electrodomesticos', watts: 400, hours: 0.25, icon: '🍹' },
+  { id: 19, name: 'Impresora', category: 'oficina', watts: 50, hours: 2, icon: '🖨️' },
+  { id: 20, name: 'Consola de videojuegos', category: 'entretenimiento', watts: 200, hours: 4, icon: '🎮' },
+];
+
+export const PRODUCTS = [
+  { id: 1, name: 'Canadian Solar 550W', category: 'panel', brand: 'Canadian Solar', model: 'CS6R-550MS', price: 220, wattage: 550, rating: 4.8, reviews: 124, specs: { efficiency: '21.3%', warranty: '25 años', weight: '28.6 kg' } },
+  { id: 2, name: 'LONGi Hi-MO 5 450W', category: 'panel', brand: 'LONGi', model: 'LR5-72HBD-450M', price: 185, wattage: 450, rating: 4.6, reviews: 89, specs: { efficiency: '20.5%', warranty: '25 años', weight: '22.5 kg' } },
+  { id: 3, name: 'Trina Vertex S 580W', category: 'panel', brand: 'Trina Solar', model: 'TSM-DE21(II)', price: 240, wattage: 580, rating: 4.7, reviews: 67, specs: { efficiency: '21.8%', warranty: '25 años', weight: '32.1 kg' } },
+  { id: 4, name: 'SMA Sunny Island 10kW', category: 'inverter', brand: 'SMA', model: 'Sunny Island 10.0', price: 3500, wattage: 10000, rating: 4.9, reviews: 56, specs: { efficiency: '97%', warranty: '10 años', type: 'Híbrido' } },
+  { id: 5, name: 'Fronius Primo 8kW', category: 'inverter', brand: 'Fronius', model: 'Primo 8.2-1', price: 2800, wattage: 8200, rating: 4.8, reviews: 43, specs: { efficiency: '98%', warranty: '10 años', type: 'String' } },
+  { id: 6, name: 'Huawei SUN2000 12kW', category: 'inverter', brand: 'Huawei', model: 'SUN2000-12KTL-M2', price: 3200, wattage: 12000, rating: 4.7, reviews: 78, specs: { efficiency: '98.6%', warranty: '10 años', type: 'Híbrido' } },
+  { id: 7, name: 'Tesla Powerwall 13.5kWh', category: 'battery', brand: 'Tesla', model: 'Powerwall 2', price: 8500, wattage: 13500, rating: 4.7, reviews: 201, specs: { capacity: '13.5 kWh', warranty: '10 años', dod: '90%' } },
+  { id: 8, name: 'BYD Battery-Box 10kWh', category: 'battery', brand: 'BYD', model: 'Battery-Box Premium HVS', price: 5200, wattage: 10000, rating: 4.6, reviews: 134, specs: { capacity: '10 kWh', warranty: '10 años', dod: '90%' } },
+  { id: 9, name: 'Cable Solar 10mm² (rollo 50m)', category: 'cable', brand: 'Tycables', model: 'SOLAR-10', price: 180, wattage: null, rating: 4.5, reviews: 67, specs: { section: '10mm²', length: '50m', type: 'DC Solar' } },
+  { id: 10, name: 'Cable Solar 6mm² (rollo 50m)', category: 'cable', brand: 'Tycables', model: 'SOLAR-6', price: 120, wattage: null, rating: 4.4, reviews: 45, specs: { section: '6mm²', length: '50m', type: 'DC Solar' } },
+  { id: 11, name: 'SPD Tipo II 40kA', category: 'protection', brand: 'Schneider', model: 'iPRD 40r', price: 95, wattage: null, rating: 4.8, reviews: 32, specs: { type: 'SPD Tipo II', capacity: '40kA', voltage: '275V' } },
+  { id: 12, name: 'Disyuntor Diferencial 40A', category: 'protection', brand: 'Schneider', model: 'Acti9 iID', price: 65, wattage: null, rating: 4.6, reviews: 28, specs: { type: 'Diferencial', rating: '40A', poles: '2P' } },
+];
+
+export const INSTALLERS = [
+  { id: 1, company: 'SolarTech MX', contact: 'Ing. Carlos Méndez', email: 'info@solarTech.mx', phone: '+52 55 1234 5678', city: 'Ciudad de México', state: 'CDMX', specialties: ['residential', 'commercial'], certifications: ['NABCEP', 'CFE'], rating: 4.8, years: 8, verified: true },
+  { id: 2, company: 'EcoSolar SA', contact: 'Ing. Ana García', email: 'contacto@ecosolar.mx', phone: '+52 33 9876 5432', city: 'Guadalajara', state: 'Jalisco', specialties: ['residential', 'rural'], certifications: ['CFE'], rating: 4.5, years: 5, verified: true },
+  { id: 3, company: 'SunPower Pro', contact: 'Ing. Roberto Díaz', email: 'ventas@sunpowerpro.mx', phone: '+52 81 5555 1234', city: 'Monterrey', state: 'Nuevo León', specialties: ['commercial', 'industrial'], certifications: ['NABCEP', 'ISO 9001'], rating: 4.9, years: 12, verified: true },
+  { id: 4, company: 'Fotón Energía', contact: 'Ing. María López', email: 'info@fotonenergia.mx', phone: '+52 33 4444 5678', city: 'Guadalajara', state: 'Jalisco', specialties: ['residential'], certifications: ['CFE'], rating: 4.3, years: 3, verified: false },
+  { id: 5, company: 'Solar Solutions MTY', contact: 'Ing. Fernando Ruiz', email: 'soluciones@solarsolutions.mx', phone: '+52 81 6666 7890', city: 'Monterrey', state: 'Nuevo León', specialties: ['residential', 'commercial', 'industrial'], certifications: ['NABCEP', 'CFE', 'ISO 9001'], rating: 4.7, years: 10, verified: true },
+  { id: 6, company: 'Verde Solar', contact: 'Ing. Laura Hernández', email: 'hola@verdesolar.mx', phone: '+52 55 7777 8901', city: 'Puebla', state: 'Puebla', specialties: ['residential', 'rural'], certifications: ['CFE'], rating: 4.4, years: 4, verified: false },
+];
+
+export const CATEGORIES = {
+  panel: { label: 'Paneles Solares', icon: '☀️', color: 'solar' },
+  inverter: { label: 'Inversores', icon: '⚡', color: 'blue' },
+  battery: { label: 'Baterías', icon: '🔋', color: 'emerald' },
+  cable: { label: 'Cableado', icon: '🔌', color: 'purple' },
+  protection: { label: 'Protecciones', icon: '🛡️', color: 'red' },
+};
