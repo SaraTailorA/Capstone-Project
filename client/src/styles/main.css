@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-midnight-950 text-white antialiased;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-midnight-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-midnight-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-midnight-500;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-solar-400 hover:bg-solar-500 text-midnight-950 font-semibold
+           px-6 py-3 rounded-xl transition-all duration-200
+           hover:shadow-solar active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-midnight-700 hover:bg-midnight-600 text-white font-medium
+           px-6 py-3 rounded-xl transition-all duration-200
+           border border-midnight-600 hover:border-midnight-500
+           active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply border-2 border-solar-400 text-solar-400 hover:bg-solar-400 hover:text-midnight-950
+           font-semibold px-6 py-3 rounded-xl transition-all duration-200
+           active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply text-midnight-300 hover:text-white hover:bg-midnight-800
+           font-medium px-4 py-2 rounded-lg transition-all duration-200;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white font-semibold
+           px-6 py-3 rounded-xl transition-all duration-200
+           active:scale-[0.98];
+  }
+
+  .card {
+    @apply bg-midnight-800/50 backdrop-blur-sm border border-midnight-700/50
+           rounded-2xl p-6 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply card hover:border-solar-400/30 hover:shadow-card-hover
+           hover:-translate-y-1 cursor-pointer;
+  }
+
+  .input-field {
+    @apply w-full bg-midnight-800 border border-midnight-600 rounded-xl
+           px-4 py-3 text-white placeholder-midnight-400
+           focus:outline-none focus:ring-2 focus:ring-solar-400/50 focus:border-solar-400
+           transition-all duration-200;
+  }
+
+  .input-label {
+    @apply block text-sm font-medium text-midnight-200 mb-2;
+  }
+
+  .input-error {
+    @apply border-red-500 focus:ring-red-500/50 focus:border-red-500;
+  }
+
+  .stat-card {
+    @apply card flex flex-col items-center justify-center text-center min-h-[120px];
+  }
+
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-3xl font-display font-bold text-white;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-solar-300 to-solar-500 bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply bg-midnight-800/30 backdrop-blur-md border border-midnight-700/30;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-solar {
+    @apply badge bg-solar-400/20 text-solar-300;
+  }
+
+  .badge-green {
+    @apply badge bg-emerald-500/20 text-emerald-300;
+  }
+
+  .badge-blue {
+    @apply badge bg-blue-500/20 text-blue-300;
+  }
+
+  .badge-red {
+    @apply badge bg-red-500/20 text-red-300;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
