@@ -1,79 +1,107 @@
 # SolarCalc - Smart Solar Energy
 
-A single-page web application that helps individuals and businesses estimate a photovoltaic solar energy system for their home, business, or farm.
+A full-stack web application that helps individuals and businesses estimate a photovoltaic solar energy system for their home, business, or farm.
 
 ## Tech Stack
 
 - **Frontend:** Vanilla JavaScript, Vite, Tailwind CSS
-- **Backend:** Node.js, Express (coming soon)
-- **Database:** PostgreSQL (coming soon)
+- **Backend:** Node.js, Express.js
+- **Database:** PostgreSQL
 - **Design:** Dark theme inspired by Tesla Energy
-
-## Features
-
-- 4-step photovoltaic system calculator
-- Two calculation methods: manual kWh input or appliance-based estimation
-- Estimates solar panels, inverter, breakers, wiring, and protections
-- Financial analysis: total cost, monthly savings, ROI, CO2 reduction
-- User registration and login to save quotes
-- Dashboard with project history
-- Downloadable PDF quote generation
-- Solar products marketplace
-- Certified installer directory
-- Fully responsive and accessible design
-
-## Getting Started
-
-```bash
-# Install dependencies
-cd client
-npm install
-
-# Development server
-npm run dev
-
-# Production build
-npm run build
-
-# Preview production build
-npm run preview
-```
 
 ## Project Structure
 
 ```
 solarcalc/
-├── client/                  # Frontend SPA
+├── frontend/               # SPA Frontend
 │   ├── src/
-│   │   ├── core/           # Router, auth, event bus, storage
-│   │   ├── domain/         # Entities and photovoltaic calculations
+│   │   ├── core/           # Router, auth, HTTP client
+│   │   ├── domain/         # Business logic & calculations
 │   │   ├── components/     # Reusable UI components
-│   │   ├── layouts/        # Layouts (main, auth, dashboard)
+│   │   ├── layouts/        # Page layouts
 │   │   ├── pages/          # Application pages
-│   │   └── utils/          # Utilities and constants
+│   │   └── utils/          # Utilities & constants
 │   └── public/             # Static assets
-├── server/                 # Backend API (coming soon)
-└── docs/                   # Documentation
+│
+├── backend/                # REST API
+│   ├── src/
+│   │   ├── config/         # Database & environment config
+│   │   ├── middleware/      # Auth, error handling
+│   │   ├── modules/        # Feature modules (auth, projects, etc.)
+│   │   ├── db/             # Migrations & seeds
+│   │   └── utils/          # Helpers
+│   └── .env                # Environment variables
+│
+└── README.md
 ```
 
-## User Stories
+## Getting Started
 
-- US-01: User registration
-- US-02: User login
-- US-03: User logout
-- US-04: Edit user profile
-- US-05: Enter monthly kWh consumption
-- US-06: Estimate consumption via appliances
-- US-07: View solar system calculation results
-- US-08: Download quote as PDF
-- US-09: Save project to dashboard
-- US-10: View dashboard overview
-- US-11: View project details
-- US-12: Delete a project
-- US-13: Browse marketplace products
-- US-14: View product details
-- US-15: Search installers by location
-- US-16: View installer profile
+### Prerequisites
+- Node.js 18+
+- PostgreSQL 14+
+
+### Installation
+
+```bash
+# Install all dependencies
+npm install
+
+# Setup database
+npm run db:setup
+
+# Start frontend + backend
+npm run dev:all
+```
+
+### Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start frontend only |
+| `npm run dev:backend` | Start backend only |
+| `npm run dev:all` | Start both |
+| `npm run build` | Build frontend for production |
+| `npm run db:migrate` | Run database migrations |
+| `npm run db:seed` | Seed demo data |
+
+## API Endpoints
+
+### Auth
+- `POST /api/auth/register` - Register user
+- `POST /api/auth/login` - Login
+- `GET /api/auth/me` - Get profile (auth required)
+
+### Projects
+- `GET /api/projects` - List user projects (auth required)
+- `GET /api/projects/:id` - Get project (auth required)
+- `POST /api/projects` - Create project (auth required)
+- `DELETE /api/projects/:id` - Delete project (auth required)
+
+### Products
+- `GET /api/products` - List products (with filters)
+- `GET /api/products/:id` - Get product
+
+### Installers
+- `GET /api/installers` - List installers (with filters)
+- `GET /api/installers/:id` - Get installer
+
+### Quotes
+- `GET /api/quotes` - List user quotes (auth required)
+- `POST /api/quotes` - Create quote (auth required)
+
+## Features
+
+- 4-step photovoltaic system calculator
+- Two calculation methods: manual kWh or appliance-based
+- Estimates panels, inverter, breakers, wiring, protections
+- Financial analysis: cost, savings, ROI, CO2 reduction
+- User registration and login
+- Dashboard with project history
+- PDF quote generation
+- Solar products marketplace
+- Certified installer directory
+- Fully responsive design
 
 ## License
 

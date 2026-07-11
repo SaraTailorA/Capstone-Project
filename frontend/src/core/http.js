@@ -28,7 +28,7 @@ async function request(endpoint, options = {}) {
     return data;
   } catch (error) {
     if (error.message === 'Failed to fetch') {
-      throw new Error('Servidor no disponible. Usando datos locales.');
+      throw new Error('Backend no disponible. Ejecuta: npm run dev:backend');
     }
     throw error;
   }
