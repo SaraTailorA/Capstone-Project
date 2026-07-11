@@ -3,8 +3,9 @@ import { APPLIANCES } from '../../utils/constants.js';
 import { calculateFullSystem, calculateDailyConsumption, calculateMonthlyConsumption } from '../../domain/values/EnergyCalculations.js';
 import { formatCurrency, formatKwh, formatCO2, formatMonths } from '../../utils/formatters.js';
 import { storage } from '../../core/storage.js';
-import { isAuthenticated } from '../../core/auth.js';
+import { isAuthenticated, getUser } from '../../core/auth.js';
 import { showToast } from '../../core/toast.js';
+import { navigate } from '../../core/router.js';
 
 let currentStep = 0;
 const steps = ['Consumo', 'Electrodomésticos', 'Resultados', 'Cotización'];
@@ -289,6 +290,66 @@ function renderStep4(results) {
   `;
 }
 
+function showAuthGateModal() {
+  const modal = document.getElementById('modal-container');
+  if (!modal) return;
+
+  modal.innerHTML = `
+    <div class="fixed inset-0 z-[100] flex items-center justify-center p-4" id="auth-gate-overlay">
+      <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+      <div class="relative bg-midnight-800 border border-midnight-600 rounded-2xl p-8 max-w-md w-full animate-slide-up shadow-2xl">
+        <button id="auth-gate-close" class="absolute top-4 right-4 text-midnight-400 hover:text-white transition text-xl">&times;</button>
+
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 rounded-full bg-solar-400/20 flex items-center justify-center text-3xl mx-auto mb-4">
+            🔒
+          </div>
+          <h3 class="text-xl font-display font-bold text-white mb-2">Inicia Sesión para Ver Resultados</h3>
+          <p class="text-midnight-400 text-sm">Necesitas una cuenta gratuita para acceder al análisis completo de tu sistema solar.</p>
+        </div>
+
+        <div class="space-y-3">
+          <button id="auth-gate-login" class="btn-primary w-full !py-3.5 text-center">
+            Iniciar Sesión
+          </button>
+          <button id="auth-gate-register" class="btn-outline w-full !py-3.5 text-center">
+            Crear Cuenta Gratis
+          </button>
+        </div>
+
+        <p class="text-center text-midnight-500 text-xs mt-4">Es rápido y gratuito. Tus datos están seguros.</p>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('auth-gate-close').addEventListener('click', () => {
+    modal.innerHTML = '';
+  });
+
+  document.getElementById('auth-gate-overlay').addEventListener('click', (e) => {
+    if (e.target.id === 'auth-gate-overlay') modal.innerHTML = '';
+  });
+
+  document.getElementById('auth-gate-login').addEventListener('click', () => {
+    modal.innerHTML = '';
+    navigate('/login');
+  });
+
+  document.getElementById('auth-gate-register').addEventListener('click', () => {
+    modal.innerHTML = '';
+    navigate('/register');
+  });
+}
+
+function proceedToResults() {
+  if (!isAuthenticated()) {
+    showAuthGateModal();
+    return;
+  }
+  calculatorState.results = calculateFullSystem(calculatorState.monthlyKwh);
+  goToStep(2);
+}
+
 function updateAppCalculations() {
   const dailyKwh = calculateDailyConsumption(calculatorState.appliances);
   const monthlyKwh = calculateMonthlyConsumption(dailyKwh);
@@ -361,8 +422,7 @@ function attachCalculatorEvents() {
   if (step1Next) {
     step1Next.addEventListener('click', () => {
       calculatorState.monthlyKwh = parseInt(document.getElementById('kwh-input')?.value) || 300;
-      calculatorState.results = calculateFullSystem(calculatorState.monthlyKwh);
-      goToStep(2);
+      proceedToResults();
     });
   }
 
@@ -408,8 +468,7 @@ function attachCalculatorEvents() {
       const dailyKwh = calculateDailyConsumption(calculatorState.appliances);
       calculatorState.monthlyKwh = Math.round(calculateMonthlyConsumption(dailyKwh));
     }
-    calculatorState.results = calculateFullSystem(calculatorState.monthlyKwh);
-    goToStep(2);
+    proceedToResults();
   });
   if (step3Prev) step3Prev.addEventListener('click', () => goToStep(calculatorState.method === 'appliances' ? 1 : 0));
   if (step3Next) step3Next.addEventListener('click', () => goToStep(3));
